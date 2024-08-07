@@ -1,0 +1,56 @@
+<html>
+    <script>
+
+        function debouncePopulateDiv() {
+            // delay the call to populate div until I have not been called for 100ms
+            // and i have been called atleast once.
+            
+            clearTimeout(timeout);
+
+            const timeout = setTimeout(function() {
+                populateDiv()
+            }, 100)
+
+        }
+
+        function populateDiv() {
+            let a = document.getElementById("principal").value;
+            let b = document.getElementById("interest").value;
+            let c = document.getElementById("timeperiod").value;
+
+            // let element = document.getElementById("finalSum");
+            // element.innerHTML = parseInt(a) + parseInt(b);
+            //fetch
+            fetch(`https://sum-server.100xdevs.com/interest?principal=${a}&rate=${b}&time=${c}`)
+                .then(function(response) {
+                    response.text()
+                        .then(function(ans) {
+                            console.log(ans);
+                            document.getElementById("finalSum").innerHTML = ans;
+                        })
+                })
+            
+        }
+
+        async function populateDiv2() {
+            let a = document.getElementById("firstno").value;
+            let b = document.getElementById("secondno").value;
+
+            const response = await fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+            const ans = await response.text();
+            document.getElementById("finalSum").innerHTML = ans;
+
+            
+        }
+    </script>
+
+
+    <body>
+        <input  class="inputs" id="principal" type="text" oninput="populateDiv()" placeholder="Principal Amount"></input> <br></br>
+        <input  class="inputs" id="interest" type="text" oninput="populateDiv()" placeholder="Interest  Rate"></input> <br></br>
+        <input  class="inputs" id="timeperiod" type="text" oninput="populateDiv()" placeholder="Time Period (in yrs)"></input> <br></br>
+
+        <!-- <button onclick="populateDiv()">Calculate Interest</button> <br></br> -->
+        <div id="finalSum"></div>
+    </body>
+</html>
