@@ -19,7 +19,15 @@ const handler = NextAuth({
         },
       })
   ],
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    session: ({session, token, user}: any) => {
+      if(session && session.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    }
+  }
 })
 
 export { handler as GET, handler as POST }

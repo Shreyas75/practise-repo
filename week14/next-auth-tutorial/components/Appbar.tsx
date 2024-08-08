@@ -8,13 +8,15 @@ export const Appbar = () => {
         <div>
             <button onClick={() => {
                 signIn();
-            }}>Login</button>
+            }}>Signin</button>
 
             <button onClick={() => {
                 signOut();
-            }}>Logout</button>
+            }}>Signout</button>
 
-            {JSON.stringify(session)}
+            <div>
+                {JSON.stringify(session)}   
+            </div>
         </div>
     )
 }
