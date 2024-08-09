@@ -6,7 +6,10 @@ export default async function () {
     return (
         <div>
             User Component. Test
+            <div>
+            User Details:
             {JSON.stringify(session)}
+            </div>
         </div>
     )
 }
