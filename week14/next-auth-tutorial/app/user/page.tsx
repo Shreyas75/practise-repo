@@ -5,7 +5,7 @@ export default async function () {
     const session = await getServerSession();
     return (
         <div>
-            User Component.
+            User Component. Test
             {JSON.stringify(session)}
         </div>
     )
