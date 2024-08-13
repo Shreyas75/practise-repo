@@ -1,9 +1,10 @@
+import HeroSection from "@/components/ui/HeroSection";
 
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-5xl text-center">Chai aur code</h1>
-    </div>
+    <main className="min-h-screen bg-black/[0.96 antialiased bg-grid-white/[0.02]" >
+      <HeroSection />
+    </main>
   )
 }
