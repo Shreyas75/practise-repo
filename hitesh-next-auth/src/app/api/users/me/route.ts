@@ -6,6 +6,7 @@ connect();
 
 
 export async function POST(request: NextRequest){
+    console.log("me route")
     // extract data from token
     const userId = await getDataFromToken(request)
     const user = await User.findOne({_id: userId}).select("-password");
