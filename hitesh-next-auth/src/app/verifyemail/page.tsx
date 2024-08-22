@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function VerifyEmailPage () {
 
-
+  //verify email logic built in here send email via mailtrap
   // const router = useRouter();
 
   const [token, setToken] = useState("");
